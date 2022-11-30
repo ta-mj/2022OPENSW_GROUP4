@@ -135,7 +135,7 @@ can't have more than 4 attacks!"
         for name in ["atc", "defense", "initiative"]:
             setattr(self, name, round((self.lvl() + self.inf[name]
                     + (2 if self.shiny else 0)) * self.nature.get_value(name)))
-        setattr(self,"hp",round(self.lvl() + self.inf[name]))
+        setattr(self,"hp",round(self.lvl() + self.inf["hp"]))
         for atc in self.attack_obs:
             atc.set_ap(atc.max_ap)
 

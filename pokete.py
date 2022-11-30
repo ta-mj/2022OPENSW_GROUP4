@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """This software is licensed under the GPL3
-You should have gotten an copy of the GPL3 license anlonside this software
+You should have gotten a copy of the GPL3 license anlonside this software
 Feel free to contribute what ever you want to this game
 New Pokete contributions are especially welcome
 For this see the comments in the definations area
@@ -194,7 +194,7 @@ gained {add_xp}xp and reached level {pokete_care.poke.lvl()}!"])
     @staticmethod
     def playmap_32_npc_12(npc):
         """Interaction with npc_12"""
-        npc.give("Old man", "hyperball")    
+        npc.give("Old man", "hyperball")
 
     @staticmethod
     def playmap_36_npc_14(npc):
@@ -327,7 +327,7 @@ class CenterInteract(se.Object):
 
 
 class ShopInteract(se.Object):
-    """Triggers an conversation in the shop"""
+    """Triggers a conversation in the shop"""
 
     def action(self, ob):
         """Triggers an interaction in the shop
