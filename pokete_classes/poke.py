@@ -38,7 +38,7 @@ class Poke:
                  _effects=None, player=True, shiny=False, nature=None,
                  stats=None):
         self.nature = PokeNature.random() if nature is None \
-                        else PokeNature.from_dict(nature)
+            else PokeNature.from_dict(nature)
         self.inf = p_data.pokes[poke]
         self.moves = Moves(self)
         # Attributes
@@ -170,7 +170,8 @@ can't have more than 4 attacks!"
 {((self.lvl() + 1) ** 2 - 1) - (self.lvl() ** 2 - 1)}")
         self.text_lvl.rechar(f"Lvl:{self.lvl()}")
         self.text_hp.rechar(f"HP:{self.hp}")
-        logging.info("[Poke][%s] Gained %dxp (curr:%d)", self.name, _xp, self.xp)
+        logging.info("[Poke][%s] Gained %dxp (curr:%d)",
+                     self.name, _xp, self.xp)
         if old_lvl < self.lvl():
             logging.info("[Poke][%s] Reached lvl. %d", self.name, self.lvl())
             return True
@@ -194,7 +195,7 @@ can't have more than 4 attacks!"
             for eff in self.effects:
                 if eff.effect() == 1:
                     return
-            if any(isinstance(i, effects.confusion) for i in self.effects):
+            if any(isinstance(i, effects.confusion) for i in self.effects) and random.randint(0, 1) == 0:
                 self.enem = enem = self
             else:
                 self.enem = enem
