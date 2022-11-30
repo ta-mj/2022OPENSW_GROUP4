@@ -86,6 +86,10 @@ class NPC(se.Box):
         mvp.movemap.show()
         time.sleep(SPEED_OF_TIME * 1)
         exclamation.remove()
+        if ask_bool(mvp.movemap, "Would you like to talk?", mvp.movemap):
+            return True
+        else:
+            return False
 
     def action(self):
         """Interaction with the NPC triggered by NPCTrigger.action"""
@@ -94,9 +98,13 @@ class NPC(se.Box):
         logging.info("[NPC][%s] Interaction", self.name)
         mvp.movemap.full_show()
         time.sleep(SPEED_OF_TIME * 0.7)
-        self.exclamate()
-        self.text(self.texts)
-        self.func()
+        opinion = self.exclamate()
+        if opinion == True:
+            self.text(self.texts)
+            self.func()
+        else:
+            pass
+        
 
     def func(self):
         """The function that's executed after the interaction"""
