@@ -86,7 +86,7 @@ class NPC(se.Box):
         mvp.movemap.show()
         time.sleep(SPEED_OF_TIME * 1)
         exclamation.remove()
-        if ask_bool(mvp.movemap, "Would you like to talk?", mvp.movemap):
+        if self.__class__ == Trainer or ask_bool(mvp.movemap, "Would you like to talk?", mvp.movemap):
             return True
         else:
             return False
@@ -97,14 +97,22 @@ class NPC(se.Box):
             return
         logging.info("[NPC][%s] Interaction", self.name)
         mvp.movemap.full_show()
-        time.sleep(SPEED_OF_TIME * 0.7)
+        self.fig.npc = self
+        # time.sleep(SPEED_OF_TIME * 0.7)
+        # opinion = self.exclamate()
+        # if opinion == True:
+        #     self.text(self.texts)
+        #     self.func()
+        # else:
+        #     pass
+
+    def reaction(self):
         opinion = self.exclamate()
         if opinion == True:
             self.text(self.texts)
             self.func()
         else:
             pass
-        
 
     def func(self):
         """The function that's executed after the interaction"""
@@ -272,7 +280,7 @@ class Trainer(NPC, Provider):
             return
         self.pokes = [p for p in self.pokes if p.hp > 0]
         if self.pokes and (not self.used
-                                 or not settings("save_trainers").val) \
+                           or not settings("save_trainers").val) \
                 and self.check_walk(self.fig.x, self.fig.y):
             mvp.movemap.full_show()
             time.sleep(SPEED_OF_TIME * 0.7)
