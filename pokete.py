@@ -431,7 +431,6 @@ class Figure(se.Object, ProtoFigure):
                                                     "playmap_1")]
         self.oldmap = obmp.ob_maps[_si.get("oldmap", "playmap_1")]
         self.direction = "t"
-        self.npc = None
 
     def set_args(self, _si):
         """Processes data from save file
@@ -1127,14 +1126,11 @@ def _game(_map):
         # Directions are not being used yet
         action = get_action()
         if action.triggers(*ACTION_DIRECTIONS):
-            figure.npc = None
             figure.direction = ''
             figure.set(
                 figure.x + action.get_x_strength(),
                 figure.y + action.get_y_strength()
             )
-        elif action.triggers(Action.ACCEPT) and figure.npc != None:
-            figure.npc.reaction()
         elif action.triggers(*inp_dict):
             for key, option in inp_dict.items():
                 if action.triggers(key):
