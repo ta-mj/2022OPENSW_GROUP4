@@ -98,13 +98,6 @@ class NPC(se.Box):
         logging.info("[NPC][%s] Interaction", self.name)
         mvp.movemap.full_show()
         self.fig.npc = self
-        # time.sleep(SPEED_OF_TIME * 0.7)
-        # opinion = self.exclamate()
-        # if opinion == True:
-        #     self.text(self.texts)
-        #     self.func()
-        # else:
-        #     pass
 
     def reaction(self):
         opinion = self.exclamate()
